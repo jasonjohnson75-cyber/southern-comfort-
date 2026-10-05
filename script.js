@@ -58,3 +58,11 @@ ${data.get('message') || ''}`
   );
   window.location.href = `mailto:souconcom1995@yahoo.com?subject=${subject}&body=${body}`;
 });
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900 && nav) {
+    nav.classList.remove('open');
+    nav.removeAttribute('style');
+    menuBtn?.setAttribute('aria-expanded', 'false');
+  }
+});
