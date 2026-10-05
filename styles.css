@@ -248,3 +248,50 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
 }
 
 /* Cloudflare deployment trigger: contact logo + Facebook 60% size update */
+
+/* Content updates: move Need Service copy left 1 inch, add price and testimonials */
+@media(min-width:1201px){
+  .contact-cta-copy{transform:translateX(-96px)}
+}
+.service-price{
+  display:inline-block;
+  margin:4px 0 2px!important;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#eef5fb;
+  color:#0b4a88;
+  font-size:12px!important;
+  font-weight:900;
+}
+.testimonials{
+  padding:34px 0 38px;
+  background:#f8fafc;
+}
+.testimonials .section-heading{margin-bottom:20px}
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.testimonial-card{
+  margin:0;
+  padding:22px;
+  background:#fff;
+  border-radius:12px;
+  border-top:4px solid var(--red);
+  box-shadow:0 5px 18px rgba(10,48,84,.10);
+}
+.testimonial-card p{
+  margin:0 0 14px;
+  color:#234c73;
+  font-size:14px;
+  line-height:1.55;
+}
+.testimonial-card footer{
+  color:var(--blue);
+  font-size:13px;
+  font-weight:900;
+}
+@media(max-width:900px){
+  .testimonial-grid{grid-template-columns:1fr}
+}
