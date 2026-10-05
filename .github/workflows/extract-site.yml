@@ -1,0 +1,41 @@
+name: Extract Southern Comfort Site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "southern-comfort-github-site.zip"
+      - ".github/workflows/extract-site.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Extract approved website package
+        run: |
+          unzip -o southern-comfort-github-site.zip -d .
+          test -f index.html
+          test -f styles.css
+          test -f script.js
+          test -f assets/logo.webp
+          test -f assets/breeze-banner-exact.webp
+
+      - name: Commit extracted website files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html styles.css script.js README.txt assets/
+          if git diff --cached --quiet; then
+            echo "No extracted-file changes to commit."
+          else
+            git commit -m "Extract approved website assets [skip ci]"
+            git push
+          fi
