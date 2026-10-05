@@ -1,3 +1,4 @@
+
 const menuBtn = document.querySelector('.menu-btn');
 const nav = document.querySelector('.main-nav');
 
@@ -20,6 +21,7 @@ menuBtn?.addEventListener('click', () => {
   }
 });
 
+// Close mobile navigation when a link is selected.
 document.querySelectorAll('.main-nav a').forEach(link => {
   link.addEventListener('click', () => {
     nav.classList.remove('open');
@@ -28,6 +30,7 @@ document.querySelectorAll('.main-nav a').forEach(link => {
   });
 });
 
+// Preselect the most relevant service/request when CTA buttons are clicked.
 const serviceSelect = document.getElementById('serviceSelect');
 document.querySelectorAll('.action-link').forEach(link => {
   link.addEventListener('click', () => {
@@ -39,6 +42,7 @@ document.querySelectorAll('.action-link').forEach(link => {
   });
 });
 
+// Functional no-backend fallback: build a pre-addressed email from the service form.
 document.getElementById('requestForm')?.addEventListener('submit', (e) => {
   e.preventDefault();
   const data = new FormData(e.currentTarget);
