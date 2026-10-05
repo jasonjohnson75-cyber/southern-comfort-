@@ -59,28 +59,28 @@
     </div>
     <div class="service-grid">
       <article class="service-card">
-        <img src="assets/card-hvac.webp" alt="HVAC repair equipment">
+        <img loading="lazy" src="assets/card-hvac.webp" alt="HVAC repair equipment">
         <div class="round-icon">🔧</div>
         <h3>HVAC Repair</h3>
         <p>Fast, reliable repairs to keep your home comfortable year-round.</p>
         <a class="card-btn action-link" data-request="HVAC Repair" href="#service-form">See Details →</a>
       </article>
       <article class="service-card">
-        <img src="assets/card-install.webp" alt="HVAC installation systems">
+        <img loading="lazy" src="assets/card-install.webp" alt="HVAC installation systems">
         <div class="round-icon">⚙</div>
         <h3>HVAC Installation</h3>
         <p>Energy-efficient system installations for lasting comfort and lower utility costs.</p>
         <a class="card-btn" href="#hvac-installation">See Details →</a>
       </article>
       <article class="service-card">
-        <img src="assets/card-appliance.webp" alt="Home appliances">
+        <img loading="lazy" src="assets/card-appliance.webp" alt="Home appliances">
         <div class="round-icon">▣</div>
         <h3>Appliance Repair</h3>
         <p>Expert repair for your major home appliances, so your day keeps running smoothly.</p>
         <a class="card-btn" href="#appliance-repair">See Details →</a>
       </article>
       <article class="service-card">
-        <img src="assets/card-maintenance.webp" alt="HVAC pressure gauges">
+        <img loading="lazy" src="assets/card-maintenance.webp" alt="HVAC pressure gauges">
         <div class="round-icon">🔧</div>
         <h3>Maintenance &amp; Tune-Ups</h3>
         <p>Keep your systems running at peak performance with preventive service.</p>
@@ -93,7 +93,7 @@
 
 <section class="breeze-exact" id="financing">
   <div class="breeze-banner-wrap">
-    <img src="assets/breeze-banner-exact.webp" alt="Breeze Financing with Southern Comfort Mechanical service truck">
+    <img class="breeze-banner-image" src="assets/breeze-banner-exact.webp" alt="Breeze Financing with Southern Comfort Mechanical service truck">
     <a class="breeze-hotspot action-link" data-request="Financing" href="#service-form" aria-label="Apply now through Breeze financing"></a>
   </div>
 </section>
@@ -113,13 +113,13 @@
         <a class="btn btn-blue" href="tel:+16013498834">☎ Call 601-349-8834</a>
       </div>
     </div>
-    <img class="detail-image" src="assets/install-detail.webp" alt="HVAC installation and ductwork">
+    <img loading="lazy" class="detail-image" src="assets/install-detail.webp" alt="HVAC installation and ductwork">
   </div>
 </section>
 
 <section class="detail-section appliance-row" id="appliance-repair">
   <div class="container detail-grid">
-    <img class="detail-image" src="assets/appliance-detail.webp" alt="Kitchen appliances">
+    <img loading="lazy" class="detail-image" src="assets/appliance-detail.webp" alt="Kitchen appliances">
     <div class="detail-copy">
       <div class="detail-title-row"><span class="detail-icon red">▣</span><h2>Appliance Repair</h2></div>
       <p>Before replacing an expensive appliance, let Southern Comfort Mechanical<br>diagnose the problem and determine whether it can be repaired.</p>
@@ -149,7 +149,7 @@
         <a class="btn btn-blue" href="tel:+16013498834">☎ Call 601-349-8834</a>
       </div>
     </div>
-    <img class="detail-image" src="assets/maintenance-detail.webp" alt="HVAC pressure gauges">
+    <img loading="lazy" class="detail-image" src="assets/maintenance-detail.webp" alt="HVAC pressure gauges">
   </div>
 </section>
 
@@ -182,7 +182,7 @@
       <h2>Need Service?</h2>
       <div class="need-links">
         <a href="tel:+16013498834">☎ <span><b>Call</b><small>601-349-8834</small></span></a>
-        <a class="action-link" data-request="Request Service" href="#service-form">▣ <span><b>Schedule a<br>Service</b></span></a>
+        <a class="action-link" data-request="Request Service" href="#service-form">▣ <span><b>Schedule<br>Service</b></span></a>
         <a class="action-link" data-request="Request a Quote" href="#service-form">▤ <span><b>Request<br>a Quote</b></span></a>
         <a href="mailto:souconcom1995@yahoo.com">✉ <span><b>Send<br>a Message</b></span></a>
       </div>
@@ -205,9 +205,9 @@
       <p><a class="inline-link" href="tel:+16013498834">Call 601-349-8834</a> or <a class="inline-link" href="mailto:souconcom1995@yahoo.com">email Southern Comfort</a>.</p>
     </div>
     <form id="requestForm">
-      <input name="name" required placeholder="Name">
-      <input name="phone" required type="tel" placeholder="Phone">
-      <input name="email" type="email" placeholder="Email">
+      <input name="name" autocomplete="name" required placeholder="Name">
+      <input name="phone" autocomplete="tel" inputmode="tel" required type="tel" placeholder="Phone">
+      <input name="email" autocomplete="email" type="email" placeholder="Email">
       <select name="service" id="serviceSelect" required>
         <option value="">Service Needed</option>
         <option>Request Service</option>
@@ -217,7 +217,6 @@
         <option>Appliance Repair</option>
         <option>Maintenance / Tune-Up</option>
         <option>Commercial Service</option>
-        <option>Generac</option>
         <option>Financing</option>
         <option>Other</option>
       </select>
