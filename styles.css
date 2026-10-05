@@ -44,7 +44,7 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
 /* Approved Need Service banner */
 .contact-cta{
   display:grid;
-  grid-template-columns:minmax(0,1.68fr) minmax(320px,.72fr);
+  grid-template-columns:minmax(0,1.58fr) minmax(420px,.98fr);
   width:100%;
   min-height:190px;
   overflow:hidden;
@@ -152,16 +152,18 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:32px;
-  padding:26px max(34px,calc((100vw - 1180px)/2)) 26px 56px;
+  gap:38px;
+  padding:26px max(34px,calc((100vw - 1180px)/2)) 26px 42px;
   background:
     radial-gradient(circle at 100% 100%,#f1f4f8 0,transparent 42%),
     #fff;
 }
 .contact-cta-brand img{
-  width:min(472px,82%);
+  width:min(780px,96%);
+  max-width:none;
   height:auto;
   object-fit:contain;
+  flex:0 0 auto;
 }
 .contact-brand-divider{
   width:1px;
@@ -196,7 +198,7 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
     padding:18px 28px;
     border-top:1px solid #e3e8ee;
   }
-  .contact-cta-brand img{width:330px}
+  .contact-cta-brand img{width:440px}
   .contact-brand-divider{height:110px}
   .contact-facebook{width:74px;height:74px;font-size:40px;border-width:5px}
 }
@@ -229,7 +231,7 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
   .contact-action:last-child{border-bottom:0!important}
   .contact-action-icon{width:44px;height:44px;flex-basis:44px;font-size:21px}
   .contact-cta-brand{padding:20px 16px;gap:18px}
-  .contact-cta-brand img{width:250px}
+  .contact-cta-brand img{width:300px}
   .contact-brand-divider{height:70px}
   .contact-facebook{width:56px;height:56px;font-size:30px;border-width:4px}
 }
