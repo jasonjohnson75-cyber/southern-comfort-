@@ -31,3 +31,12 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
   outline:3px solid #fff;
   outline-offset:3px;
 }
+
+#services,#financing,#hvac-installation,#appliance-repair,#maintenance,#about,#contact,#service-form{scroll-margin-top:88px}
+.btn,.card-btn,.main-nav a,.need-links a,.footer-grid a,.socials a{transition:transform .16s ease,box-shadow .16s ease,opacity .16s ease}
+.btn:hover,.card-btn:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(0,0,0,.16)}
+.main-nav a:hover,.footer-grid a:hover{opacity:.72}
+.btn:focus-visible,.card-btn:focus-visible,.main-nav a:focus-visible,.need-links a:focus-visible,.footer-grid a:focus-visible,.socials a:focus-visible,.menu-btn:focus-visible{outline:3px solid #62d0ff;outline-offset:3px}
+@media(max-width:900px){
+  .breeze-banner-image{width:100%;height:auto;margin-top:-3px}
+}
