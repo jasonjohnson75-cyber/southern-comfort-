@@ -15,19 +15,20 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
 @media(max-width:600px){.container{width:min(100% - 22px,1180px)}.brand img{width:190px}.hero h1{font-size:39px}.hero-buttons,.trust-row,.detail-buttons{flex-direction:column}.service-grid{grid-template-columns:1fr}.check-columns{grid-template-columns:1fr}.need-links{grid-template-columns:1fr 1fr}.contact-brand{flex-direction:column}.footer-grid{grid-template-columns:1fr;gap:16px}.footer-bottom{flex-direction:column;gap:5px}#requestForm{grid-template-columns:1fr}#requestForm textarea,#requestForm button,#requestForm .form-note{grid-column:auto}}
 
 
-.breeze-exact{background:#07549b}
-.breeze-banner-wrap{position:relative;width:100%;max-width:1180px;margin:0 auto}
-.breeze-banner-wrap img{display:block;width:100%;height:auto}
+.breeze-exact{background:#07549b;width:100%;overflow:hidden}
+.breeze-banner-wrap{position:relative;width:100%;margin:0;overflow:hidden;line-height:0}
+.breeze-banner-image{display:block;width:100%;height:auto;margin-top:-7px}
 .breeze-hotspot{
   position:absolute;
   left:4.5%;
-  top:65%;
+  top:66%;
   width:23%;
-  height:28%;
+  height:29%;
   border-radius:8px;
   z-index:3;
+  line-height:1;
 }
-.breeze-hotspot:focus{
+.breeze-hotspot:focus-visible{
   outline:3px solid #fff;
   outline-offset:3px;
 }
