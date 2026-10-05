@@ -54,7 +54,7 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
 .contact-cta-left{
   position:relative;
   display:grid;
-  grid-template-columns:minmax(280px,.78fr) minmax(620px,1.75fr);
+  grid-template-columns:minmax(280px,.82fr) minmax(620px,1.68fr);
   align-items:center;
   gap:34px;
   padding:26px 34px 26px max(34px,calc((100vw - 1180px)/2));
@@ -111,6 +111,7 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
 }
 .contact-action-panel{
   position:relative;
+  transform:translateX(-144px);
   z-index:3;
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -159,7 +160,7 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
     #fff;
 }
 .contact-cta-brand img{
-  width:min(780px,96%);
+  width:min(780px,86%);
   max-width:none;
   height:auto;
   object-fit:contain;
@@ -171,22 +172,30 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
   background:#d8dee6;
 }
 .contact-facebook{
-  width:93px;
-  height:93px;
+  flex:0 0 72px;
+  width:72px;
+  height:72px;
+  aspect-ratio:1 / 1;
   border-radius:50%;
   display:grid;
   place-items:center;
-  border:6px solid #1456a4;
+  border:4px solid #1456a4;
   color:#1456a4;
-  font-size:51px;
   line-height:1;
-  font-weight:900;
-  font-family:Arial,Helvetica,sans-serif;
+  background:#fff;
+  box-sizing:border-box;
+}
+.facebook-icon{
+  width:38px;
+  height:38px;
+  display:block;
+  fill:currentColor;
 }
 .contact-facebook:hover{background:#f4f8fd}
 
 @media(max-width:1200px){
   .contact-cta{grid-template-columns:1fr}
+  .contact-action-panel{transform:none}
   .contact-cta-left{
     grid-template-columns:.75fr 1.55fr;
     padding-left:28px;
@@ -200,7 +209,8 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
   }
   .contact-cta-brand img{width:440px}
   .contact-brand-divider{height:110px}
-  .contact-facebook{width:74px;height:74px;font-size:40px;border-width:5px}
+  .contact-facebook{flex-basis:64px;width:64px;height:64px;border-width:4px}
+  .facebook-icon{width:34px;height:34px}
 }
 @media(max-width:900px){
   .contact-cta-left{
@@ -233,7 +243,8 @@ footer{padding:12px 0 10px;background:#fff}.footer-grid{display:grid;grid-templa
   .contact-cta-brand{padding:20px 16px;gap:18px}
   .contact-cta-brand img{width:300px}
   .contact-brand-divider{height:70px}
-  .contact-facebook{width:56px;height:56px;font-size:30px;border-width:4px}
+  .contact-facebook{flex-basis:52px;width:52px;height:52px;border-width:3px}
+  .facebook-icon{width:28px;height:28px}
 }
 
 /* Cloudflare deployment trigger: contact logo + Facebook 60% size update */
