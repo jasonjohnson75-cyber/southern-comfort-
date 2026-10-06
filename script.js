@@ -2,32 +2,31 @@
 const menuBtn = document.querySelector('.menu-btn');
 const nav = document.querySelector('.main-nav');
 
+function closeMenu() {
+  if (!nav || !menuBtn) return;
+  nav.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  menuBtn.setAttribute('aria-label', 'Open navigation');
+}
+
 menuBtn?.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', String(isOpen));
-  if (isOpen) {
-    nav.style.display='flex';
-    nav.style.position='absolute';
-    nav.style.top='72px';
-    nav.style.left='14px';
-    nav.style.right='14px';
-    nav.style.background='#fff';
-    nav.style.padding='18px';
-    nav.style.flexDirection='column';
-    nav.style.boxShadow='0 12px 28px rgba(0,0,0,.14)';
-    nav.style.borderRadius='10px';
-  } else {
-    nav.removeAttribute('style');
-  }
+  const isOpen = nav?.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  menuBtn.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
 });
 
-// Close mobile navigation when a link is selected.
 document.querySelectorAll('.main-nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    nav.removeAttribute('style');
-    menuBtn?.setAttribute('aria-expanded', 'false');
-  });
+  link.addEventListener('click', closeMenu);
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeMenu();
+});
+
+document.addEventListener('click', (event) => {
+  if (!nav?.classList.contains('open')) return;
+  if (nav.contains(event.target) || menuBtn?.contains(event.target)) return;
+  closeMenu();
 });
 
 // Preselect the most relevant service/request when CTA buttons are clicked.
@@ -60,9 +59,5 @@ ${data.get('message') || ''}`
 });
 
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 900 && nav) {
-    nav.classList.remove('open');
-    nav.removeAttribute('style');
-    menuBtn?.setAttribute('aria-expanded', 'false');
-  }
+  if (window.innerWidth > 900) closeMenu();
 });
