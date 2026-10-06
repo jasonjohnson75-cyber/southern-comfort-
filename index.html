@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="description" content="Southern Comfort Mechanical provides HVAC repair, installation, appliance repair, maintenance, and commercial and residential mechanical service across Mississippi.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -153,6 +153,12 @@
   <div class="breeze-banner-wrap">
     <img class="breeze-banner-image" src="assets/breeze-banner-exact.webp" alt="Breeze Financing with Southern Comfort Mechanical service truck">
     <a class="breeze-hotspot action-link" data-request="Financing" href="#service-form" aria-label="Apply now through Breeze financing"></a>
+  </div>
+  <div class="breeze-mobile-cta">
+    <p class="breeze-mobile-kicker">BREEZE FINANCING</p>
+    <h2>Get the Comfort You Need Today</h2>
+    <p>Ask about flexible financing options for qualifying service and equipment needs.</p>
+    <a class="btn btn-red action-link" data-request="Financing" href="#service-form">Apply Through Breeze</a>
   </div>
 </section>
 
@@ -318,10 +324,10 @@
       <p><a class="inline-link" href="tel:+16013498834">Call 601-349-8834</a> or <a class="inline-link" href="mailto:souconcom1995@yahoo.com">email Southern Comfort</a>.</p>
     </div>
     <form id="requestForm">
-      <input name="name" autocomplete="name" required placeholder="Name">
-      <input name="phone" autocomplete="tel" inputmode="tel" required type="tel" placeholder="Phone">
-      <input name="email" autocomplete="email" type="email" placeholder="Email">
-      <select name="service" id="serviceSelect" required>
+      <input name="name" autocomplete="name" required placeholder="Name" aria-label="Name">
+      <input name="phone" autocomplete="tel" inputmode="tel" required type="tel" placeholder="Phone" aria-label="Phone">
+      <input name="email" autocomplete="email" type="email" placeholder="Email" aria-label="Email">
+      <select name="service" id="serviceSelect" required aria-label="Service needed">
         <option value="">Service Needed</option>
         <option>Request Service</option>
         <option>Request a Quote</option>
@@ -333,7 +339,7 @@
         <option>Financing</option>
         <option>Other</option>
       </select>
-      <textarea name="message" required placeholder="Tell us how we can help"></textarea>
+      <textarea name="message" required placeholder="Tell us how we can help" aria-label="Tell us how we can help"></textarea>
       <button class="btn btn-red" type="submit">Send Request</button>
       <p class="form-note">This form opens an email addressed to Southern Comfort Mechanical so the request can be sent immediately.</p>
     </form>
