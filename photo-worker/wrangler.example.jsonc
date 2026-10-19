@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "southern-comfort-photo-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-19",
+  "r2_buckets": [
+    {
+      "binding": "PHOTOS",
+      "bucket_name": "southern-comfort-photos"
+    }
+  ],
+  "vars": {
+    "ADMIN_EMAIL": "souconcom1995@yahoo.com"
+  }
+}
