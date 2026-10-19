@@ -679,3 +679,56 @@ body{overflow-x:hidden}
   .contact-cta-copy h2{font-size:40px}
   .contact-cta-brand img{width:min(210px,70%)}
 }
+
+
+/* Dynamic Recent Work gallery */
+.recent-work{
+  padding:38px 0 42px;
+  background:linear-gradient(180deg,#f7fafc,#fff);
+}
+.recent-work[hidden]{display:none}
+.photo-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:22px;
+}
+.photo-card{
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #e1e8ef;
+  border-radius:12px;
+  box-shadow:0 5px 18px rgba(10,48,84,.09);
+}
+.photo-card img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  background:#edf3f8;
+}
+.photo-card-copy{padding:13px 14px 15px}
+.photo-category{
+  display:inline-block;
+  margin:0 0 5px;
+  color:var(--red);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.55px;
+  text-transform:uppercase;
+}
+.photo-caption{
+  margin:0;
+  color:#153f69;
+  font-size:14px;
+  line-height:1.4;
+  font-weight:700;
+}
+@media(max-width:900px){
+  .photo-gallery{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .recent-work{padding:30px 0 34px}
+  .photo-gallery{grid-template-columns:1fr;gap:14px}
+  .photo-card img{aspect-ratio:16/11}
+  .photo-caption{font-size:15px}
+}
