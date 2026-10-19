@@ -57,23 +57,53 @@ uploadBox.addEventListener('drop', e => {
   if (file) showPreview(file);
 });
 
+async function decodeForCanvas(file) {
+  if ('createImageBitmap' in window) {
+    try {
+      const bitmap = await createImageBitmap(file);
+      return {
+        width: bitmap.width,
+        height: bitmap.height,
+        draw(ctx, width, height) { ctx.drawImage(bitmap, 0, 0, width, height); },
+        cleanup() { bitmap.close?.(); }
+      };
+    } catch {}
+  }
+
+  const objectUrl = URL.createObjectURL(file);
+  try {
+    const image = new Image();
+    image.src = objectUrl;
+    await image.decode();
+    return {
+      width: image.naturalWidth,
+      height: image.naturalHeight,
+      draw(ctx, width, height) { ctx.drawImage(image, 0, 0, width, height); },
+      cleanup() { URL.revokeObjectURL(objectUrl); }
+    };
+  } catch {
+    URL.revokeObjectURL(objectUrl);
+    throw new Error('This phone could not prepare that photo. Try choosing a JPG, PNG, or WebP image.');
+  }
+}
+
 async function compressImage(file) {
   if (file.size > 15 * 1024 * 1024) {
     throw new Error('Please choose a photo smaller than 15 MB.');
   }
 
-  const bitmap = await createImageBitmap(file);
+  const source = await decodeForCanvas(file);
   const maxSide = 1800;
-  const scale = Math.min(1, maxSide / Math.max(bitmap.width, bitmap.height));
-  const width = Math.max(1, Math.round(bitmap.width * scale));
-  const height = Math.max(1, Math.round(bitmap.height * scale));
+  const scale = Math.min(1, maxSide / Math.max(source.width, source.height));
+  const width = Math.max(1, Math.round(source.width * scale));
+  const height = Math.max(1, Math.round(source.height * scale));
 
   const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
   const ctx = canvas.getContext('2d', { alpha:false });
-  ctx.drawImage(bitmap, 0, 0, width, height);
-  bitmap.close?.();
+  source.draw(ctx, width, height);
+  source.cleanup();
 
   const blob = await new Promise((resolve, reject) => {
     canvas.toBlob(result => result ? resolve(result) : reject(new Error('Could not prepare this photo.')), 'image/webp', 0.84);
