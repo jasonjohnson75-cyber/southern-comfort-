@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#063c77">
+  <title>Southern Comfort Photo Manager</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <div class="admin-shell header-inner">
+      <img src="/assets/logo.webp" alt="Southern Comfort Mechanical">
+      <div>
+        <p class="eyebrow">PRIVATE CONTENT TOOL</p>
+        <h1>Photo Manager</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-shell">
+    <section class="panel intro-panel">
+      <div>
+        <h2>Add a New Project Photo</h2>
+        <p>Choose a picture from your phone, add a short caption, select a category, and publish it to the Recent Work section of the website.</p>
+      </div>
+      <a class="site-link" href="/" target="_blank" rel="noopener">View Website</a>
+    </section>
+
+    <section class="panel">
+      <form id="photoForm">
+        <label class="upload-box" for="photoInput">
+          <input id="photoInput" name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" required>
+          <span class="upload-icon" aria-hidden="true">＋</span>
+          <strong>Choose Photo</strong>
+          <span>JPG, PNG, WebP, HEIC/HEIF when supported</span>
+        </label>
+
+        <div id="previewWrap" class="preview-wrap" hidden>
+          <img id="previewImage" alt="Selected photo preview">
+          <button id="changePhoto" class="link-button" type="button">Choose a different photo</button>
+        </div>
+
+        <div class="field-grid">
+          <label>
+            <span>Category</span>
+            <select id="categoryInput" name="category" required>
+              <option value="HVAC Repair">HVAC Repair</option>
+              <option value="HVAC Installation">HVAC Installation</option>
+              <option value="Appliance Repair">Appliance Repair</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Before & After">Before &amp; After</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label class="wide-field">
+            <span>Caption</span>
+            <textarea id="captionInput" name="caption" maxlength="180" rows="3" placeholder="Example: New HVAC installation completed in Jackson, Mississippi." required></textarea>
+            <small><span id="captionCount">0</span>/180</small>
+          </label>
+        </div>
+
+        <label class="publish-toggle">
+          <input id="publishInput" type="checkbox" checked>
+          <span>
+            <strong>Publish immediately</strong>
+            <small>Turn this off if you want the photo stored but hidden from the public website.</small>
+          </span>
+        </label>
+
+        <div class="form-actions">
+          <button id="uploadButton" class="primary-button" type="submit">Upload &amp; Publish</button>
+          <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="section-row">
+        <div>
+          <p class="eyebrow">WEBSITE PHOTOS</p>
+          <h2>Recent Uploads</h2>
+        </div>
+        <button id="refreshButton" class="secondary-button" type="button">Refresh</button>
+      </div>
+      <div id="adminGallery" class="admin-gallery">
+        <p class="empty-state">Loading photos…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="admin-footer">
+    <div class="admin-shell">
+      Southern Comfort Mechanical Photo Manager · Protected with Cloudflare Access
+    </div>
+  </footer>
+
+  <script src="/admin/admin.js"></script>
+</body>
+</html>
