@@ -61,3 +61,63 @@ ${data.get('message') || ''}`
 window.addEventListener('resize', () => {
   if (window.innerWidth > 900) closeMenu();
 });
+
+
+// Load published photos from the Southern Comfort Photo Manager.
+// The gallery remains hidden until at least one published photo is available.
+async function loadRecentWork() {
+  const section = document.getElementById('recent-work');
+  const gallery = document.getElementById('photoGallery');
+  if (!section || !gallery) return;
+
+  try {
+    const response = await fetch('/api/photos', {
+      headers: { 'Accept': 'application/json' },
+      cache: 'no-store'
+    });
+    if (!response.ok) return;
+
+    const payload = await response.json();
+    const photos = Array.isArray(payload.photos) ? payload.photos.slice(0, 9) : [];
+    if (!photos.length) return;
+
+    const fragment = document.createDocumentFragment();
+    photos.forEach(photo => {
+      const card = document.createElement('article');
+      card.className = 'photo-card';
+
+      const image = document.createElement('img');
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.src = photo.url;
+      image.alt = photo.caption || (photo.category ? `Southern Comfort Mechanical ${photo.category} project` : 'Southern Comfort Mechanical recent project');
+
+      const copy = document.createElement('div');
+      copy.className = 'photo-card-copy';
+
+      if (photo.category) {
+        const category = document.createElement('span');
+        category.className = 'photo-category';
+        category.textContent = photo.category;
+        copy.appendChild(category);
+      }
+
+      if (photo.caption) {
+        const caption = document.createElement('p');
+        caption.className = 'photo-caption';
+        caption.textContent = photo.caption;
+        copy.appendChild(caption);
+      }
+
+      card.append(image, copy);
+      fragment.appendChild(card);
+    });
+
+    gallery.replaceChildren(fragment);
+    section.hidden = false;
+  } catch {
+    // Keep the public gallery hidden if the photo service is unavailable.
+  }
+}
+
+loadRecentWork();
