@@ -41,26 +41,6 @@ function publicPhoto(photo) {
   };
 }
 
-async function isAdminRequest(request, env, ctx) {
-  let email = request.headers.get("Cf-Access-Authenticated-User-Email");
-  const jwt = request.headers.get("Cf-Access-Jwt-Assertion");
-
-  if (ctx?.access) {
-    try {
-      const identity = await ctx.access.getIdentity();
-      email = identity?.email || email;
-    } catch {
-      return false;
-    }
-  } else if (!jwt) {
-    return false;
-  }
-
-  if (!email) return false;
-  if (!env.ADMIN_EMAIL) return true;
-  return email.toLowerCase() === env.ADMIN_EMAIL.toLowerCase();
-}
-
 function validOrigin(request) {
   const origin = request.headers.get("Origin");
   if (!origin) return true;
@@ -111,9 +91,10 @@ export default {
     // Everything below this point must be protected by Cloudflare Access
     // on southerncomfortmechanicalllc.cc/admin/*.
     if (path.startsWith("/admin/api/")) {
-      if (!(await isAdminRequest(request, env, ctx))) {
-        return json({error:"Unauthorized. Sign in through Southern Comfort Photo Manager."}, 401);
-      }
+      // Authentication is enforced by the Cloudflare Access self-hosted
+      // application protecting southerncomfortmechanicalllc.cc/admin/*.
+      // The Access policy allows only souconcom1995@yahoo.com before this
+      // Worker route is invoked.
       if (!validOrigin(request)) {
         return json({error:"Invalid request origin."}, 403);
       }
