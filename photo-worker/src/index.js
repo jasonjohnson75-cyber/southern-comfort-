@@ -41,10 +41,22 @@ function publicPhoto(photo) {
   };
 }
 
-function isAdminRequest(request, env) {
+async function isAdminRequest(request, env, ctx) {
+  let email = request.headers.get("Cf-Access-Authenticated-User-Email");
   const jwt = request.headers.get("Cf-Access-Jwt-Assertion");
-  const email = request.headers.get("Cf-Access-Authenticated-User-Email");
-  if (!jwt || !email) return false;
+
+  if (ctx?.access) {
+    try {
+      const identity = await ctx.access.getIdentity();
+      email = identity?.email || email;
+    } catch {
+      return false;
+    }
+  } else if (!jwt) {
+    return false;
+  }
+
+  if (!email) return false;
   if (!env.ADMIN_EMAIL) return true;
   return email.toLowerCase() === env.ADMIN_EMAIL.toLowerCase();
 }
@@ -60,7 +72,7 @@ function validOrigin(request) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const path = url.pathname;
 
@@ -99,7 +111,7 @@ export default {
     // Everything below this point must be protected by Cloudflare Access
     // on southerncomfortmechanicalllc.cc/admin/*.
     if (path.startsWith("/admin/api/")) {
-      if (!isAdminRequest(request, env)) {
+      if (!(await isAdminRequest(request, env, ctx))) {
         return json({error:"Unauthorized. Sign in through Southern Comfort Photo Manager."}, 401);
       }
       if (!validOrigin(request)) {
